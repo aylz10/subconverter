@@ -165,6 +165,7 @@ int WebServer::start_web_server_multi(listener_args *args)
                 return httplib::Server::HandlerResponse::Handled;
             }
         }
+        res.set_header("Access-Control-Allow-Origin", "*");
         res.set_header("X-Client-IP", req.remote_addr);
         if (req.has_header("Access-Control-Request-Headers"))
         {
