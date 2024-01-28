@@ -39,7 +39,7 @@ RUN set -xe && \
     cd .. && \
     git clone https://github.com/asdlokj1qpi233/subconverter --depth=1 && \
     cd subconverter && \
-    [ -n "$SHA" ] && sed -i 's/\(v[0-9]\.[0-9]\.[0-9]\)/\1-'"$SHA"'/' src/version.h;\
+    [ -n "$SHA" ] && sed -i 's/\(v[0-9]\+\.[0-9]\+\.[0-9]\+\)/\1-'"$SHA"'/' src/version.h;\
     python3 -m ensurepip && \
     python3 -m pip install gitpython && \
     python3 scripts/update_rules.py -c scripts/rules_config.conf && \
