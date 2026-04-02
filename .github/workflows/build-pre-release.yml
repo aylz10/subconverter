@@ -15,7 +15,7 @@ jobs:
     name: Linux x86 Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Add commit id into version
       if: ${{ !startsWith(github.ref, 'refs/tags/') }}
       run: SHA=$(git rev-parse --short HEAD) && sed -i 's/\(v[0-9]\+\.[0-9]\+\.[0-9]\+\)/\1-'"$SHA"'/' src/version.h
@@ -25,7 +25,7 @@ jobs:
       if: ${{ github.event_name != 'pull_request' }}
       run: tar czf subconverter_linux32.tar.gz subconverter
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: subconverter_linux32
         path: subconverter_linux32.tar.gz
@@ -34,7 +34,7 @@ jobs:
     name: Linux x86_64 Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Add commit id into version
       if: ${{ !startsWith(github.ref, 'refs/tags/') }}
       run: SHA=$(git rev-parse --short HEAD) && sed -i 's/\(v[0-9]\+\.[0-9]\+\.[0-9]\+\)/\1-'"$SHA"'/' src/version.h
@@ -44,7 +44,7 @@ jobs:
       if: ${{ github.event_name != 'pull_request' }}
       run: tar czf subconverter_linux64.tar.gz subconverter
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: subconverter_linux64
         path: subconverter_linux64.tar.gz
@@ -53,7 +53,7 @@ jobs:
     name: Linux armv7 Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Add commit id into version
       if: ${{ !startsWith(github.ref, 'refs/tags/') }}
       run: SHA=$(git rev-parse --short HEAD) && sed -i 's/\(v[0-9]\+\.[0-9]\+\.[0-9]\+\)/\1-'"$SHA"'/' src/version.h
@@ -65,7 +65,7 @@ jobs:
       if: ${{ github.event_name != 'pull_request' }}
       run: tar czf subconverter_armv7.tar.gz subconverter
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: subconverter_armv7
         path: subconverter_armv7.tar.gz
@@ -74,7 +74,7 @@ jobs:
     name: Linux aarch64 Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Add commit id into version
       if: ${{ !startsWith(github.ref, 'refs/tags/') }}
       run: SHA=$(git rev-parse --short HEAD) && sed -i 's/\(v[0-9]\+\.[0-9]\+\.[0-9]\+\)/\1-'"$SHA"'/' src/version.h
@@ -86,7 +86,7 @@ jobs:
       if: ${{ github.event_name != 'pull_request' }}
       run: tar czf subconverter_aarch64.tar.gz subconverter
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: subconverter_aarch64
         path: subconverter_aarch64.tar.gz
@@ -95,7 +95,7 @@ jobs:
     name: macOS Build
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-python@v4
       with:
         python-version: '3.11'
@@ -108,7 +108,7 @@ jobs:
       if: ${{ github.event_name != 'pull_request' }}
       run: tar czf subconverter_darwin64.tar.gz subconverter
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: subconverter_darwin64
         path: subconverter_darwin64.tar.gz
@@ -120,7 +120,7 @@ jobs:
       run:
         shell: msys2 {0}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-python@v4
       with:
         python-version: '3.11'
@@ -142,7 +142,7 @@ jobs:
       if: ${{ github.event_name != 'pull_request' }}
       run: 7z a subconverter_win64.7z subconverter/
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: subconverter_win64
         path: subconverter_win64.7z
@@ -154,7 +154,7 @@ jobs:
       run:
         shell: msys2 {0}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-python@v4
       with:
         python-version: '3.11'
@@ -176,7 +176,7 @@ jobs:
       if: ${{ github.event_name != 'pull_request' }}
       run: 7z a subconverter_win32.7z subconverter/
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: subconverter_win32
         path: subconverter_win32.7z
@@ -187,7 +187,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
     - name: Display structure of downloaded files
       run: ls -R
     - name: Delete old Pre-release
